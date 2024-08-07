@@ -1,0 +1,97 @@
+* {
+    font-family: monospace;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    color-scheme: dark;
+    width: 100%;
+    height: 100%;
+}
+
+canvas {
+    min-width: 0;
+    min-height: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    padding: 1em;
+    gap: 1em;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:    "canvas"
+                            "footer";
+    justify-items: center; /* Individual left-right */
+    align-items: center; /* Individual up-down */
+    justify-content: stretch; /* Container left-right */
+    align-content: stretch; /* Container up-down */
+    text-align: center;
+}
+
+#canvas {
+    grid-area: canvas;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+footer {
+    grid-area: footer;
+}
+
+/* Button styling */
+
+#downloadButton{
+    position: absolute;
+    top: 100px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    z-index: 1; /* Ensure the button appears above the canvas */ 
+}
+#optionsButton{
+    position: absolute;
+    top: 100px; /* Adjust as needed */
+    left: 160px; /* Adjust as needed */
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    z-index: 1; /* Ensure the button appears above the canvas */ 
+}
+#historyButton{
+    position: absolute;
+    top: 100px; /* Adjust as needed */
+    left: 310px; /* Adjust as needed */
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    z-index: 1; /* Ensure the button appears above the canvas */ 
+}
+#startNewEndButton{
+    position: absolute;
+    top: 100px; /* Adjust as needed */
+    left: 460px; /* Adjust as needed */
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    z-index: 1; /* Ensure the button appears above the canvas */ 
+}
+#titlefooter{
+    font-size: 40px; /* Change the font size */
+    position: fixed; /* Or use absolute, fixed, etc., based on your layout needs */
+    left: 0px; /* Adjust the position horizontally */
+    top: 0px; /* Adjust the position vertically */
+    color: #343cb3; /* Optional: change text color */
+    padding: 15px; /* Optional: change padding */
+    border-radius: 5px; /* Optional: add rounded corners */
+}
+#countInfo {
+    margin-top: 10px; /* Adjust as needed */
+    font-size: 1.2em; /* Adjust as needed */
+}
