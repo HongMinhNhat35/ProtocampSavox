@@ -1,0 +1,15 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP NE555DR
+D Single Precision Timer
+K
+F http://www.ti.com/lit/ds/symlink/ne555.pdf
+$ENDCMP
+#
+$CMP RFANT3216120A5T
+D Antennas 2450+/-50MHz 2.9GHz Fc 2dBi
+K
+F http://www.passivecomponent.com/wp-content/uploads/2013/12/ASC_RFANT3216120A5T_V09.pdf
+$ENDCMP
+#
+#End Doc Library
