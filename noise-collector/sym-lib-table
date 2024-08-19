@@ -18,4 +18,6 @@
   (lib (name "MCP4551T-503E_MS")(type "KiCad")(uri "${KIPRJMOD}/MCP4551T-503E_MS.kicad_sym")(options "")(descr ""))
   (lib (name "TC33X-2-101E")(type "KiCad")(uri "${KIPRJMOD}/TC33X-2-101E.kicad_sym")(options "")(descr ""))
   (lib (name "3313J-1-204E")(type "KiCad")(uri "${KIPRJMOD}/3313J-1-204E.kicad_sym")(options "")(descr ""))
+  (lib (name "2024-08-12_07-45-24")(type "KiCad")(uri "${KIPRJMOD}/2024-08-12_07-45-24.kicad_sym")(options "")(descr ""))
+  (lib (name "ProLib_pcs_2024-08-12")(type "EasyEDA (JLCEDA) Pro")(uri "${KIPRJMOD}/ProLib_pcs_2024-08-12.elibz")(options "")(descr ""))
 )

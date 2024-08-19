@@ -1,4 +1,4 @@
-23674798560460190
+23697201276740356
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -68488,6 +68488,13 @@ DIL DIP PDIP 2.54mm 7.62mm 300mil
 4
 4
 OwnFootprints
+OwnMIcrophone
+
+
+0
+4
+4
+OwnFootprints
 OwnSwitch
 
 
@@ -88893,6 +88900,13 @@ rotary encoder illuminated switch vertical
 9
 8
 SamacSys_Parts
+ABS8
+
+
+0
+4
+4
+SamacSys_Parts
 ANTC3216X130N
 RFANT3216120A5T-
 Antenna
@@ -88920,6 +88934,27 @@ BAT_BRX1-2477-SM
 0
 3
 3
+SamacSys_Parts
+D0008A_L
+
+OPA1678IDR 
+0
+8
+8
+SamacSys_Parts
+D0008A_M
+
+OPA1678IDR 
+0
+8
+8
+SamacSys_Parts
+D0008A_N
+
+OPA1678IDR 
+0
+8
+8
 SamacSys_Parts
 DQN0004A-MFG
 
@@ -88970,12 +89005,33 @@ Diode
 2
 2
 SamacSys_Parts
+SOIC127P599X175-8N
+
+
+0
+8
+8
+SamacSys_Parts
+SOIC127P600X175-14N
+
+
+0
+14
+14
+SamacSys_Parts
 SON65P300X300X100-9N
 
 
 0
 13
 13
+SamacSys_Parts
+SOP65P490X110-8N
+
+
+0
+8
+8
 SamacSys_Parts
 SOT-25   SMV_TOS
 
@@ -88990,6 +89046,41 @@ MOSFET (N-Channel)
 0
 3
 3
+SamacSys_Parts
+TRIM_3313J-1-204E
+
+
+0
+3
+3
+SamacSys_Parts
+TRIM_TC33X-2-101E
+<b>TC33X-2</b><br>
+
+0
+3
+3
+SamacSys_Parts
+TSSOP-14_TPK
+
+TP6004-TR 
+0
+14
+14
+SamacSys_Parts
+TSSOP-14_TPK-L
+
+TP6004-TR 
+0
+14
+14
+SamacSys_Parts
+TSSOP-14_TPK-M
+
+TP6004-TR 
+0
+14
+14
 SamacSys_Parts
 XTAL_CC7V-T1A-32.768KHZ-9PF-20PPM-TA-QC
 
