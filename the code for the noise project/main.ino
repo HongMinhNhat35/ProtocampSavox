@@ -6,14 +6,14 @@
 #include <HTTPClient.h>
 #include <math.h> // Include for log() function
 
-#define SAMPLE_SIZE 100        // Number of samples to collect in each ULP run
-#define MAX_SAMPLES 300        // Maximum number of samples to collect before sending data
+#define SAMPLE_SIZE 1000        // Number of samples to collect in each ULP run
+#define MAX_SAMPLES 3000        // Maximum number of samples to collect before sending data
 #define WIFI_SSID "aalto open" // Wi-Fi SSID (replace with your own)
 #define WIFI_PASSWORD ""        // Wi-Fi password (replace with your own)
-#define REF 1650.0              // Reference value for logarithm calculation
-#define BUZZER_PIN 13           // GPIO pin for the buzzer
+#define REF 30             // Reference value for logarithm calculation
+#define BUZZER_PIN 17           // GPIO pin for the buzzer
 #define GAIN_THRESHOLD 90.0     // Threshold for activating the buzzer
-#define DEEP_SLEEP_TIME 3000 // Deep sleep time in microseconds (30 seconds)
+#define DEEP_SLEEP_TIME 3000 // Deep sleep time in microseconds
 
 // Use RTC_DATA_ATTR to retain the counter across deep sleeps
 RTC_DATA_ATTR uint32_t counter = 0; // Counter variable stored in RTC memory
@@ -80,7 +80,7 @@ void setup() {
             if (total_samples < MAX_SAMPLES) {
                 uint16_t raw_value = RTC_SLOW_MEM[100 + i] & 0xFFF; // Extract raw ADC reading
                 // Perform logarithmic transformation on the ADC reading
-                float processed_value = log((float)raw_value / REF) * 500 + 30;
+                float processed_value = log((float)raw_value / REF) * 100 + 30;
                 cpu_samples[total_samples] = processed_value; // Store processed value
                 timestamps[total_samples] = millis(); // Store current timestamp in milliseconds
                 total_samples++;
