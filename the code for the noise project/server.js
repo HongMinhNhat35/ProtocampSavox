@@ -1,41 +1,64 @@
-// server.js
+let process = require("process");
+let os = require("os");
+let fs = require("fs");
+let http = require("http");
+let ws = require("ws");
 
-const WebSocket = require('ws');
-const http = require('http');
+let homedir = os.homedir();
+let path = `${homedir}/api/ws_htmlcssjs_backend.sock`;
 
-// Create an HTTP server
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('WebSocket server is running.');
-});
+function wsSendIfOpen(client, data) {
+  if (client.readyState === ws.WebSocket.OPEN && typeof data === "string") {
+      client.send(data);
+  }
+}
 
-// Create a WebSocket server by passing the HTTP server
-const wss = new WebSocket.Server({ server });
+let hs = http.createServer({ keepAlive: true, requestTimeout: 16000, keepAliveInitialDelay: 4000 });
+let wss = new ws.WebSocketServer({ backlog: 128, clientTracking: true, maxPayload: 1024 * 1024 *10, server: hs });
 
-// Event handler for WebSocket connections
-wss.on('connection', (ws) => {
-  console.log('A new client has connected.');
+wss.on("connection", (client, req) => {
+  console.log("open: " + req.headers["x-real-ip"]);
 
-  // Event handler for incoming messages from clients
-  ws.on('message', (message) => {
-    console.log(`Received: ${message}`);
+  // Listener for messages
+  client.on("message", (message) => {
+    console.log("Received message: ", message.toString());
 
-    // Broadcast the received message to all connected clients
-    wss.clients.forEach((client) => {
-      if (client !== ws && client.readyState === WebSocket.OPEN) {
-        client.send(message);
-      }
-    });
+    // Try to parse JSON data
+    try {
+      let jsonData = JSON.parse(message);
+
+      // Process JSON data (e.g., save to a file)
+      let filePath = `${homedir}/public/data.json`;
+      fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2)); // Pretty-print JSON
+
+      // Send confirmation back to the client
+      wsSendIfOpen(client, "JSON data received and saved successfully.");
+
+    } catch (error) {
+      console.error("Error parsing JSON: ", error);
+      wsSendIfOpen(client, "Failed to parse JSON data.");
+    }
   });
 
-  // Event handler for WebSocket connection closing
-  ws.on('close', () => {
-    console.log('A client has disconnected.');
+  // Close the connection after 1.5 minutes (90,000 milliseconds)
+  setTimeout(() => client.close(), 90000);
+
+  client.on("close", () => {
+    console.log("close: " + req.headers["x-real-ip"]);
   });
 });
 
-// Start the HTTP server on port 3000
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`WebSocket server is listening on port ${PORT}`);
+try {
+  fs.unlinkSync(path);
+} catch (error) {}
+
+hs.listen(path, () => {
+  try {
+      fs.chmodSync(hs.address(), 666);
+  } catch (error) {
+      console.log(error);
+      process.exit(1);
+  }
 });
+
+console.log("ready");

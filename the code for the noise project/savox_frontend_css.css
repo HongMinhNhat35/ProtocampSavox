@@ -1,97 +1,118 @@
-* {
-    font-family: monospace;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    color-scheme: dark;
-    width: 100%;
+html, body {
     height: 100%;
-}
-
-canvas {
-    min-width: 0;
-    min-height: 0;
+    margin: 0;
+    background-color: #f0f8ff; /* Light blue background */
 }
 
 body {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    padding: 1em;
-    gap: 1em;
-    grid-template-rows: 1fr auto;
-    grid-template-columns: 1fr;
-    grid-template-areas:    "canvas"
-                            "footer";
-    justify-items: center; /* Individual left-right */
-    align-items: center; /* Individual up-down */
-    justify-content: stretch; /* Container left-right */
-    align-content: stretch; /* Container up-down */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space between header and footer */
+    align-items: center;
     text-align: center;
+    height: 100vh; /* Full viewport height */
 }
 
-#canvas {
-    grid-area: canvas;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+header, footer {
+    width: 100%; /* Ensure header and footer take full width */
+    box-sizing: border-box;
 }
+
+#titlefooter {
+    font-size: 2em; /* Larger font size for title */
+    color: #4682b4; /* Light steel blue for text color */
+    padding: 0; /* Remove padding */
+    border: none; /* Remove border */
+    background-color: transparent; /* Make background transparent */
+    box-shadow: none; /* Remove shadow */
+    position: fixed;
+    top: 0; /* Stick header to the top */
+    left: 0;
+    width: 100%;
+    text-align: center; /* Center the text */
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
 
 footer {
-    grid-area: footer;
+    margin-top: auto; /* Push footer to the bottom */
+    font-size: 1.2em;
+    color: #4682b4; /* Light steel blue for footer */
 }
 
-/* Button styling */
+#container {
+    width: 80%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 20px 0; /* Add margin for spacing */
+    padding-top: 60px; /* Offset for the fixed header */
+    padding-bottom: 40px; /* Offset for the footer */
+}
 
-#downloadButton{
-    position: absolute;
-    top: 100px; /* Adjust as needed */
-    left: 10px; /* Adjust as needed */
+canvas {
+    border: 1px solid #dcdcdc; /* Light border for the canvas */
+    background-color: #ffffff; /* White background for the canvas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100%; /* Make canvas responsive */
+    height: 400px; /* Fixed height for canvas */
+}
+
+#countInfo {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #333333; /* Darker color for better readability */
+}
+
+#historyContainer {
+    max-height: 300px; /* Adjust as needed */
+    overflow-y: auto;  /* Enable vertical scrolling */
+    width: 80%;         /* Ensure it fits within the page */
+    margin: 20px 0;    /* Add margin for spacing */
+    padding: 40px;
+    border: 1px solid #dcdcdc;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+button {
+    background-color: #87cefa; /* Light sky blue */
+    border: none;
+    color: white;
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
-    z-index: 1; /* Ensure the button appears above the canvas */ 
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for button */
+    margin: 5px;
+    transition: background-color 0.3s, transform 0.2s;
 }
-#optionsButton{
-    position: absolute;
-    top: 100px; /* Adjust as needed */
-    left: 160px; /* Adjust as needed */
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    z-index: 1; /* Ensure the button appears above the canvas */ 
+
+button:hover {
+    background-color: #00bfff; /* Deep sky blue on hover */
+    transform: scale(1.05); /* Slight scaling effect */
 }
-#historyButton{
-    position: absolute;
-    top: 100px; /* Adjust as needed */
-    left: 310px; /* Adjust as needed */
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    z-index: 1; /* Ensure the button appears above the canvas */ 
-}
-#startNewEndButton{
-    position: absolute;
-    top: 100px; /* Adjust as needed */
-    left: 460px; /* Adjust as needed */
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    z-index: 1; /* Ensure the button appears above the canvas */ 
-}
-#titlefooter{
-    font-size: 40px; /* Change the font size */
-    position: fixed; /* Or use absolute, fixed, etc., based on your layout needs */
-    left: 0px; /* Adjust the position horizontally */
-    top: 0px; /* Adjust the position vertically */
-    color: #343cb3; /* Optional: change text color */
-    padding: 15px; /* Optional: change padding */
-    border-radius: 5px; /* Optional: add rounded corners */
+
+button:active {
+    background-color: #1e90ff; /* Dodger blue on click */
+    transform: scale(0.95); /* Slight shrinking effect */
 }
 #countInfo {
-    margin-top: 10px; /* Adjust as needed */
-    font-size: 1.2em; /* Adjust as needed */
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #333333; /* Darker color for better readability */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Add space between boxes */
+}
+
+.count-box {
+    background-color: #003366; /* Darker blue background */
+    color: #ffffff; /* White text color */
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    font-weight: bold;
+    transition: transform 0.2s;
+    display: inline-flex; /* Ensure proper spacing in flex container */
+    align-items: center; /* Center items vertically */
 }
