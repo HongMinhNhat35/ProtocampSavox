@@ -37,7 +37,7 @@ void setup() {
                 continue;
             }
             
-            int processed_data = log(raw_value / 50.0) * 300 + 20;
+            int processed_data = log(raw_value / 50.0) * 100 + 30;
 
             if (total_samples < MAX_SAMPLES) {
                 cpu_samples[total_samples] = processed_data;
