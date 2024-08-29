@@ -6,8 +6,8 @@
 
 #define SAMPLE_SIZE 1000
 #define MAX_SAMPLES 3000
-#define WIFI_SSID "QViet"
-#define WIFI_PASSWORD "ThuyenThu76@"
+#define WIFI_SSID ""
+#define WIFI_PASSWORD ""
 
 #define BUZZER_PIN 17
 #define GAIN_THRESHOLD 100
